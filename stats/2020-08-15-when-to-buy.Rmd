@@ -17,7 +17,7 @@ My roommate asked me to "build him a statistical model" to figure out when to bu
 
 My first understanding of the problem as phrased was a simple optimization problem: minimize the cost at a given store run subject to having some max storage and a minimum amount of chicken to eat for the week by deciding how much to buy.
 
-Speaking further, I realized he wanted was to have some decision rule to minimize the long-run cost based on some knowledge of the cost process over time. My reaction to that was that that sounded like something an operations research/forecasting expert would be doing for a lot of money.
+Speaking further, I realized what he wanted was to have some decision rule to minimize the long-run cost based on some knowledge of the cost process over time. My reaction to that was that that sounded like something an operations research/forecasting expert would be doing for a lot of money.
 
 But I figured that we could simplify the problem by first limiting the time period to be costs in the next year and then considering only a simple decision rule: 
 
