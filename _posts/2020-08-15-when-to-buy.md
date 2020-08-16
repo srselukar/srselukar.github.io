@@ -66,7 +66,7 @@ Now, to actually answer the question, I wanted to take a
 simulation-based approach.
 
 1.  Make different choices of cutoffs
-    1.  Fixed cutoffs of \$2,…,\$7
+    1.  Fixed cutoffs of \\$2,…,\\$7
     2.  Evolving cutoff where you compare against the minimum price seen
         so far or the average price so far
 2.  Generate many “years” (I just did 1000 this time), each year having
