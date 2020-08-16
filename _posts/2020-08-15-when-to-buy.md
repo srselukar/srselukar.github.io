@@ -32,11 +32,13 @@ doing for a lot of money.
 
 But I figured that we could simplify the problem by first limiting the
 time period to be costs in the next year and then considering only a
-simple decision rule: 1. Is there enough to last til the end of the
-year? If yes, don’t buy anything. 2. If no, is the price lower than some
-cutoff *c*? If no, then buy the minimum need to last the week. If yes,
-then buy the maximum to fill the freezer or to last til the end of the
-year.
+simple decision rule:
+
+1.  Is there enough to last til the end of the year? If yes, don’t buy
+    anything.
+2.  If no, is the price lower than some cutoff *c*? If no, then buy the
+    minimum need to last the week. If yes, then buy the maximum to fill
+    the freezer or to last til the end of the year.
 
 ``` r
 weeklyUse <- 4
