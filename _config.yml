@@ -1,6 +1,6 @@
-title: Subodh's Ruminations on Statistics and Whatever Else He Pleases
+title: Subodh's Ruminations
 logo: /assets/img/logo.png
-description: A semi-professional collection of statistics "tutorials" and blog posts
-show_downloads: true
+description: A semi-professional collection of posts on (bio)statistics and whatever else comes up
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
