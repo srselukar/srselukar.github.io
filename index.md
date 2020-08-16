@@ -3,6 +3,8 @@ layout: default
 title: Subodh Rajesh Selukar
 ---
 
+# Subodh Rajesh Selukar
+
 I am a PhD student at the University of Washington's (UW) Department of Biostatistics studying, broadly, the design, conduct and analysis of clinical trials.
 
 For my dissertation, I had the simple goal of making sure that I would be as strong a clinical trials statistician as a newly minted PhD could be. This has led me to cobble together projects in the efficiency of platform trials, survival analysis of long-term survivors and sequential monitoring in N-of-1 trials. 
