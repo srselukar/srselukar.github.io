@@ -1,77 +1,60 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-        
-        {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" />
-        {% endif %}
-
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-        {% endif %}
-
-        {% if site.github.is_user_page %}
-        <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}
-
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
-	      
-	      <nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-		        	<li><a href="/about">About</a></li>
-	        		<li><a href="/assets/cv.pdf">CV</a></li>
-	        		<!-- <li><a href="/blog">Blog</a></li> (not using this guy anymore! keeping it in case i change my mind) -->
-				<li><a href="/categories/">Posts</a></li>
-				<li><a href="/contact">Contact</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
-      </header>
-      <section>
-
-      {{ content }}
-
-      </section>
-      <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-    {% if site.google_analytics %}
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', '{{ site.google_analytics }}', 'auto');
-      ga('send', 'pageview');
-    </script>
-    {% endif %}
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p4 {margin: 0.0px 0.0px 12.0px 0.0px; font: 10.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
+    p.p5 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    p.p9 {margin: 0.0px 0.0px 12.0px 0.0px; font: 10.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    li.li6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
+    li.li7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9}
+    span.s1 {font-kerning: none}
+    span.s2 {text-decoration: underline ; font-kerning: none}
+    span.s3 {font: 12.0px Times; text-decoration: underline ; font-kerning: none}
+    span.s4 {font: 10.0px Times; text-decoration: underline ; font-kerning: none}
+    span.s5 {-webkit-text-stroke: 0px #000000}
+    span.s6 {text-decoration: underline ; font-kerning: none; -webkit-text-stroke: 0px #0000e9}
+    span.s7 {text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
+    span.s8 {font: 10.0px Times; text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
+    ul.ul1 {list-style-type: disc}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">{% seo %}</span></p>
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9"><span class="s2"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B"><b>{{ site.title | default: site.github.repository_name }}</b></a></span></h1>
+<p class="p1"><span class="s1">{% if site.logo %} <span class="Apple-converted-space"> </span>{% endif %}</span></p>
+<p class="p3"><span class="s1">{{ site.description | default: site.github.project_tagline }}</span></p>
+<p class="p1"><span class="s1">{% if site.github.is_project_page %}</span></p>
+<p class="p4"><span class="s3"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.repository_url%20%7D%7D">View the Project on GitHub <span class="s4">{{ site.github.repository_nwo }}</span></a></span></p>
+<p class="p1"><span class="s1">{% endif %} {% if site.github.is_user_page %}</span></p>
+<p class="p5"><span class="s2"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.owner_url%20%7D%7D">View My GitHub Profile<span class="s3"></span></a></span></p>
+<p class="p1"><span class="s1">{% endif %} {% if site.show_downloads %}</span></p>
+<ul class="ul1">
+  <li class="li6"><span class="s5"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.zip_url%20%7D%7D"><span class="s2">Download <b>ZIP File</b></span></a></span></li>
+  <li class="li6"><span class="s5"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.tar_url%20%7D%7D"><span class="s2">Download <b>TAR Ball</b></span></a></span></li>
+  <li class="li6"><span class="s5"><a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.repository_url%20%7D%7D"><span class="s2">View On <b>GitHub</b></span></a></span></li>
+</ul>
+<p class="p1"><span class="s1">{% endif %}</span></p>
+<ul class="ul1">
+  <li class="li6"><span class="s5"><a href="file:///"><span class="s2">Home</span></a></span></li>
+  <li class="li6"><span class="s5"><a href="file:///about"><span class="s2">About</span></a></span></li>
+  <li class="li7"><a href="file:///assets/cv.pdf"><span class="s6">CV</span></a></li>
+  <li class="li6"><span class="s5"><a href="file:///categories/"><span class="s2">Posts</span></a></span></li>
+  <li class="li6"><span class="s5"><a href="file:///contact"><span class="s2">Contact</span></a></span></li>
+</ul>
+<p class="p8"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">{{ content }}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">{% if site.github.is_project_page %}</span></p>
+<p class="p3"><span class="s1">This project is maintained by <a href="file:///Users/Subodh%201/Dropbox/Website/_layouts/%7B%7B%20site.github.owner_url%20%7D%7D"><span class="s7">{{ site.github.owner_name }}</span></a></span></p>
+<p class="p1"><span class="s1">{% endif %}</span></p>
+<p class="p9"><span class="s1">Hosted on GitHub Pages — Theme by <a href="https://github.com/orderedlist"><span class="s8">orderedlist</span></a></span></p>
+<p class="p1"><span class="s1">{% if site.google_analytics %} {% endif %}<span class="Apple-converted-space"> </span></span></p>
+</body>
 </html>

@@ -1,0 +1,10 @@
+---
+title: "When to Buy"
+author: subodh
+date: 2020-08-14
+output:
+  md_document:
+    variant: markdown_github
+---
+
+# This is a test to make sure it works!
