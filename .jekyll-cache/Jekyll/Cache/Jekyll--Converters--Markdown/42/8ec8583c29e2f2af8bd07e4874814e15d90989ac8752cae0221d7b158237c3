@@ -1,0 +1,11 @@
+I"z<h1 id="when-should-you-buy-food-on-sale">When should you buy food on sale?</h1>
+
+<p>My roommate asked me to “buid him a statistical model” to figure out
+when to buy chicken to minimize his cost.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">sum</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## [1] 6
+</code></pre></div></div>
+:ET
