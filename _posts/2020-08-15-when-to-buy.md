@@ -1,5 +1,6 @@
 ---
 title: "When to Buy"
+permalink: when-to-buy
 author: subodh
 date: 2020-08-15
 layout: post

@@ -1,0 +1,126 @@
+I"�F<h1 id="when-should-you-buy-food-on-sale">When should you buy food on sale?</h1>
+
+<p>My roommate asked me to “build him a statistical model” to figure out when to buy chicken to minimize his cost. As a vegetarian, it’s probably a bit unethical to help figure out how to optimally buy chicken, but it did sound like a decent first post.</p>
+
+<p>My first understanding of the problem as phrased was a simple optimization problem: minimize the cost at a given store run subject to having some max storage and a minimum amount of chicken to eat for the week by deciding how much to buy.</p>
+
+<p>Speaking further, I realized what he wanted was to have some decision rule to minimize the long-run cost based on some knowledge of the cost process over time. My reaction to that was that that sounded like something an operations research/forecasting expert would be doing for a lot of money.</p>
+
+<p>But I figured that we could simplify the problem by first limiting the
+time period to be costs in the next year and then considering only a
+simple decision rule:</p>
+
+<ol>
+  <li>Is there enough to last til the end of the year? If yes, don’t buy
+anything.</li>
+  <li>If no, is the price lower than some cutoff <em>c</em>? If no, then buy the
+minimum need to last the week. If yes, then buy the maximum to fill
+the freezer or to last til the end of the year.</li>
+</ol>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">weeklyUse</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4</span><span class="w">
+</span><span class="n">maxStore</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">40</span><span class="w">
+
+</span><span class="n">weeks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">52</span><span class="w">
+
+</span><span class="n">ytFun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">tElaps</span><span class="p">,</span><span class="n">d0</span><span class="o">=</span><span class="n">weeklyUse</span><span class="p">,</span><span class="n">d1</span><span class="o">=</span><span class="n">maxStore</span><span class="p">,</span><span class="n">maxT</span><span class="o">=</span><span class="n">weeks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">ifelse</span><span class="p">(</span><span class="n">y0</span><span class="o">-</span><span class="n">d0</span><span class="o">*</span><span class="p">(</span><span class="n">maxT</span><span class="o">-</span><span class="n">tElaps</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="c1"># if storage is enough to last out the year</span><span class="w">
+           </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="c1"># do not buy, else need to buy</span><span class="w">
+           </span><span class="n">ifelse</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="c1"># if price is low</span><span class="w">
+                  </span><span class="nf">min</span><span class="p">(</span><span class="n">d1</span><span class="o">-</span><span class="n">y0</span><span class="p">,</span><span class="n">d0</span><span class="o">*</span><span class="p">(</span><span class="n">maxT</span><span class="o">-</span><span class="n">tElaps</span><span class="p">)</span><span class="o">-</span><span class="n">y0</span><span class="p">),</span><span class="w"> </span><span class="c1"># buy as much as you can</span><span class="w">
+                  </span><span class="n">ifelse</span><span class="p">(</span><span class="n">y0</span><span class="o">-</span><span class="n">d0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="n">d0</span><span class="o">-</span><span class="n">y0</span><span class="p">,</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="c1"># otherwise buy the minimum you need</span><span class="w">
+    </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Of course, there are more elegant rules in which you don’t opt for only
+the minimum or the maximum, but I figured that would do for a Saturday
+afternoon. This rule has the ease in that we only need to optimize over
+the cutoff and check if the “optimum” cutoff seems roughly robust to
+different choices of price distribution.</p>
+
+<p>Now, to actually answer the question, I wanted to take a
+simulation-based approach.</p>
+
+<ol>
+  <li>Make different choices of cutoffs
+    <ol>
+      <li>Fixed cutoffs of \$2,…,\$7</li>
+      <li>Evolving cutoff where you compare against the minimum price seen
+so far or the average price so far</li>
+    </ol>
+  </li>
+  <li>Generate many “years” (I just did 1000 this time), each year having
+52 prices (representing weeks)</li>
+  <li>For each year and each cutoff, loop through each week to simulate
+store runs (this is very inefficient, forgive me!) and calculate the
+costs of the year for that cutoff</li>
+  <li>Average over all of the “years” for each cutoff</li>
+  <li>Determine what cutoff minimized the average costs!</li>
+</ol>
+
+<p>It turned out that using the evolving average decision rule minimized
+the cost across the two scenarios I tried:</p>
+
+<ol>
+  <li>The costs were \$2.50,
+\$4.00, \$6.00 and \$8.00 with probability proportional to 2, 10, 20 and 20
+times per year.</li>
+  <li>Gamma distribution with rate 1 and shape 7 (to have a
+mean of \$7.00); I truncated it to be between \$2.00 and \$10.00</li>
+</ol>
+
+<p>The rest of the code I used is below. I’m sure this is a very dirty
+approach, but intuitively I’m pretty happy recommending using the
+average since it’s generally a nice statistic.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">2020</span><span class="p">)</span><span class="w">
+
+</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">7</span><span class="p">)</span><span class="w"> </span><span class="c1"># grid of rules</span><span class="w">
+
+</span><span class="n">reps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="n">costMat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">p</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="n">reps</span><span class="p">)</span><span class="w">
+</span><span class="n">costMatUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">reps</span><span class="p">)</span><span class="w">
+
+
+
+</span><span class="c1"># avgP &lt;- 7</span><span class="w">
+</span><span class="c1"># ptExtra &lt;- rgamma(weeks*reps*10,shape=avgP,rate=1)</span><span class="w">
+</span><span class="c1"># ptAll &lt;- ptExtra[ptExtra &gt; 2 &amp; ptExtra &lt; 10][1:(weeks*reps)]</span><span class="w">
+
+</span><span class="n">ptAll</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">8</span><span class="p">),</span><span class="n">weeks</span><span class="o">*</span><span class="n">reps</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">20</span><span class="p">)</span><span class="o">/</span><span class="m">52</span><span class="p">)</span><span class="w">
+
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">reps</span><span class="p">){</span><span class="w">
+    </span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ptAll</span><span class="p">[((</span><span class="n">i</span><span class="m">-1</span><span class="p">)</span><span class="o">*</span><span class="n">weeks</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">weeks</span><span class="p">)]</span><span class="w">
+    </span><span class="n">yt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">nrow</span><span class="o">=</span><span class="n">weeks</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="w">
+    </span><span class="n">ytUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">nrow</span><span class="o">=</span><span class="n">weeks</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+    
+    </span><span class="n">tmpStore</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tmpStoreUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="m">0</span><span class="w">
+    
+    </span><span class="n">yt</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytFun</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span><span class="w"> </span><span class="c1"># start off with 0 at y0</span><span class="w">
+    </span><span class="n">ytUpdate</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytFun</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">,</span><span class="kc">FALSE</span><span class="p">),</span><span class="m">0</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="c1"># start off with auto-buying the minimum, start with 0</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">weeks</span><span class="p">){</span><span class="w">
+        </span><span class="n">tmpStore</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">yt</span><span class="p">[</span><span class="n">t</span><span class="m">-1</span><span class="p">,]</span><span class="o">+</span><span class="n">tmpStore</span><span class="o">-</span><span class="n">weeklyUse</span><span class="w">
+        </span><span class="n">tmpStoreUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytUpdate</span><span class="p">[</span><span class="n">t</span><span class="m">-1</span><span class="p">,]</span><span class="o">+</span><span class="n">tmpStoreUpdate</span><span class="o">-</span><span class="n">weeklyUse</span><span class="w">
+        
+        </span><span class="n">upd1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">-1</span><span class="p">)])</span><span class="w"> </span><span class="c1"># is it smaller than the smallest i've seen</span><span class="w">
+        </span><span class="n">upd2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">-1</span><span class="p">)])</span><span class="w"> </span><span class="c1"># is it smaller than the average i've seen</span><span class="w">
+        
+        </span><span class="n">yt</span><span class="p">[</span><span class="n">t</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytFun</span><span class="p">(</span><span class="n">pt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="n">tmpStore</span><span class="p">,</span><span class="nf">rep</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span><span class="w">
+        </span><span class="n">ytUpdate</span><span class="p">[</span><span class="n">t</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytFun</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">upd1</span><span class="p">,</span><span class="n">upd2</span><span class="p">),</span><span class="n">tmpStoreUpdate</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="p">))</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    
+    </span><span class="n">ct</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">yt</span><span class="o">*</span><span class="n">pt</span><span class="w">
+    </span><span class="n">ctUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ytUpdate</span><span class="o">*</span><span class="n">pt</span><span class="w">
+    </span><span class="n">costMat</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colSums</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span><span class="w">
+    </span><span class="n">costMatUpdate</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colSums</span><span class="p">(</span><span class="n">ctUpdate</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">avgCosts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colMeans</span><span class="p">(</span><span class="n">costMat</span><span class="p">)</span><span class="w">
+</span><span class="c1"># which.min(avgCosts)</span><span class="w">
+
+</span><span class="n">avgCostsUpdate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colMeans</span><span class="p">(</span><span class="n">costMatUpdate</span><span class="p">)</span><span class="w">
+</span><span class="c1"># which.min(avgCostsUpdate)</span><span class="w">
+</span></code></pre></div></div>
+:ET
