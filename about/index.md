@@ -45,4 +45,4 @@ Working at Amgen in simulation-based design has been an amazing experience becau
 
 After my internship ends in September, I will return to my dissertation work with the hope of graduating in Summer/early Fall 2021 and proceeding into a career (of course, planning around Covid may be a fool's errand). 
 
-As someone interested in being a clinical trial statistician, I am blessed to have a wide variety of options spanning academia, government and industry. In any of those areas, I am confident I can realize my hopes of growing into a thoughtful and capable leader in clinical trials statistics.
+As someone interested in being a clinical trials statistician, I am blessed to have a wide variety of options spanning academia, government and industry. In any of those areas, I am confident I can realize my hopes of growing into a thoughtful and capable leader in clinical trials statistics.
