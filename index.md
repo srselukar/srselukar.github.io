@@ -1,10 +1,18 @@
 ---
 layout: default
+title: Subodh Rajesh Selukar
 ---
 
-# Subodh Rajesh Selukar
+I am a PhD student at the University of Washington's (UW) Department of Biostatistics studying, broadly, the design, conduct and analysis of clinical trials.
 
-I thought it was about time I added content to the internet rather than simply consuming it. I spend far too much time on Reddit and Netflix, while I kept ideas in the back of my head for things I might want to share with others.
+For my dissertation, I had the simple goal of making sure that I would be as strong a clinical trials statistician as a newly minted PhD could be. This has led me to cobble together projects in the efficiency of platform trials, survival analysis of long-term survivors and sequential monitoring in N-of-1 trials. 
 
-I intend to use this website as a place to present various "tutorials" (more like "musings") on (bio)statistics but may also include more social/personal blog posts as well. I don't imagine that my technical posts will be revolutionary - my instructors have almost always done a superlative job at packaging information - but I want to share my views and learn along the way.  
+While my central passion is in clinical trials for human medicine, I am interested in many problems where a "statistical way of thinking" can be applied. For example, I have enjoyed working with Nayak Polissar at the Mountain-Whisper-Light Statistics group in topics such as law and veterinary medicine. I hope to apply my knowledge and experience to help others even if it's something smaller like [deciding when to buy food on sale](/when-to-buy).
 
+Pronouns: *He, him, his*
+
+---
+
+For a longer version of my journey into biostatistics, see [this post](/longer-about-me).
+
+I  love to talk with people about their goals and ambitions - if you're reading this and are unsure about your place in (bio)statistics or wherever, then please do [reach out to me](/contact). I might not be able to help you directly, but I am delighted to be someone to bounce ideas off of. 
