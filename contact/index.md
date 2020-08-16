@@ -4,7 +4,7 @@ layout: default
 
 # Contact
 
-If you have something to share or otherwise want to contact me, feel free to email me at <selukar@uw.edu>.
+If you have something to share or otherwise want to contact me, feel free to email me at <srselukar.biostats@gmail.com>.
 
 ---
 
