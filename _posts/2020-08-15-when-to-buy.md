@@ -78,9 +78,12 @@ simulation-based approach.
 5.  Determine what cutoff minimized the average costs!
 
 It turned out that using the evolving average decision rule minimized
-the cost across the two scenarios I tried: 1. The costs were \$2.50,
+the cost across the two scenarios I tried: 
+
+1. The costs were \$2.50,
 \$4.00, \$6.00 and \$8.00 with probability proportional to 2, 10, 20 and 20
-times per year. 2. Gamma distribution with rate 1 and shape 7 (to have a
+times per year. 
+2. Gamma distribution with rate 1 and shape 7 (to have a
 mean of \$7.00); I truncated it to be between \$2.00 and \$10.00
 
 The rest of the code I used is below. I’m sure this is a very dirty
