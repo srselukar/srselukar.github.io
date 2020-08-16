@@ -1,7 +1,7 @@
 ---
 title: "When to Buy"
 author: subodh
-date: 2020-08-14
+date: 2020-08-15
 layout: post
 tags: stats sims
 categories: Statistics
