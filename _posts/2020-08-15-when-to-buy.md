@@ -12,14 +12,16 @@ output:
     preserve_yaml: TRUE
 ---
 
-When should you buy food on sale?
-=================================
+# When should you buy food on sale?
+## Problem
 
 My roommate asked me to "build him a statistical model" to figure out when to buy chicken to minimize his cost. As a vegetarian, it's probably a bit unethical to help figure out how to optimally buy chicken, but it did sound like a decent first post.
 
 My first understanding of the problem as phrased was a simple optimization problem: minimize the cost at a given store run subject to having some max storage and a minimum amount of chicken to eat for the week by deciding how much to buy.
 
 Speaking further, I realized what he wanted was to have some decision rule to minimize the long-run cost based on some knowledge of the cost process over time. My reaction to that was that that sounded like something an operations research/forecasting expert would be doing for a lot of money.
+
+## Simplifying the problem
 
 But I figured that we could simplify the problem by first limiting the
 time period to be costs in the next year and then considering only a
@@ -53,6 +55,8 @@ afternoon. This rule has the ease in that we only need to optimize over
 the cutoff and check if the “optimum” cutoff seems roughly robust to
 different choices of price distribution.
 
+## My approach
+
 Now, to actually answer the question, I wanted to take a
 simulation-based approach.
 
@@ -67,6 +71,8 @@ simulation-based approach.
     costs of the year for that cutoff
 4.  Average over all of the “years” for each cutoff
 5.  Determine what cutoff minimized the average costs!
+
+## Conclusion
 
 It turned out that using the evolving average decision rule minimized
 the cost across the two scenarios I tried: 

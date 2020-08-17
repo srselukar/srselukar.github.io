@@ -1,10 +1,13 @@
-I"�F<h1 id="when-should-you-buy-food-on-sale">When should you buy food on sale?</h1>
+I"�G<h1 id="when-should-you-buy-food-on-sale">When should you buy food on sale?</h1>
+<h2 id="problem">Problem</h2>
 
 <p>My roommate asked me to “build him a statistical model” to figure out when to buy chicken to minimize his cost. As a vegetarian, it’s probably a bit unethical to help figure out how to optimally buy chicken, but it did sound like a decent first post.</p>
 
 <p>My first understanding of the problem as phrased was a simple optimization problem: minimize the cost at a given store run subject to having some max storage and a minimum amount of chicken to eat for the week by deciding how much to buy.</p>
 
 <p>Speaking further, I realized what he wanted was to have some decision rule to minimize the long-run cost based on some knowledge of the cost process over time. My reaction to that was that that sounded like something an operations research/forecasting expert would be doing for a lot of money.</p>
+
+<h2 id="simplifying-the-problem">Simplifying the problem</h2>
 
 <p>But I figured that we could simplify the problem by first limiting the
 time period to be costs in the next year and then considering only a
@@ -39,6 +42,8 @@ afternoon. This rule has the ease in that we only need to optimize over
 the cutoff and check if the “optimum” cutoff seems roughly robust to
 different choices of price distribution.</p>
 
+<h2 id="my-approach">My approach</h2>
+
 <p>Now, to actually answer the question, I wanted to take a
 simulation-based approach.</p>
 
@@ -58,6 +63,8 @@ costs of the year for that cutoff</li>
   <li>Average over all of the “years” for each cutoff</li>
   <li>Determine what cutoff minimized the average costs!</li>
 </ol>
+
+<h2 id="conclusion">Conclusion</h2>
 
 <p>It turned out that using the evolving average decision rule minimized
 the cost across the two scenarios I tried:</p>
