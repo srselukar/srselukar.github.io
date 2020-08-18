@@ -9,7 +9,7 @@ I am a PhD student at the University of Washington's (UW) Department of Biostati
 
 For my dissertation, I had the simple goal of making sure that I would be as strong a clinical trials statistician as a newly minted PhD could be. This has led me to cobble together projects in the efficiency of platform trials, survival analysis of long-term survivors and sequential monitoring in N-of-1 trials. 
 
-While my central passion is in clinical trials for human medicine, I am interested in many problems where a "statistical way of thinking" can be applied. For example, I have enjoyed working with Nayak Polissar at the Mountain-Whisper-Light Statistics group in topics such as law and veterinary medicine. I hope to apply my knowledge and experience to help others even if it's something smaller like [deciding when to buy food on sale](/when-to-buy).
+While my central passion is in clinical trials for human medicine, I am interested in many problems where a "statistical way of thinking" can be applied. For example, I have enjoyed working with the Mountain-Whisper-Light Statistics group in topics such as law and veterinary medicine. I hope to apply my knowledge and experience to help others even if it's something smaller like [deciding when to buy food on sale](/when-to-buy).
 
 Pronouns: *He, him, his*
 
