@@ -1,0 +1,91 @@
+---
+layout: post
+title: "Balancing and Randomization"
+author: subodh
+categories: Statistics
+tags: stats sims
+date: 2020-08-23
+output:
+  md_document:
+    variant: markdown_github
+    preserve_yaml: TRUE
+---
+
+At the time of writing this post, I have nearly finished one of my dissertation projects (pending my committee's review) and am trying to transition to my next project. I will be extending a previous conference paper on stratified randomization and efficiency in platform trials when experimental arms have differing treatment eligibility. 
+
+To help with the transition, I thought it would be helpful to me to write about randomization in clinical trials and its purpose!
+
+# Balancing and Randomization
+
+We say a variable is "balanced" across different groups if the distribution of that variable seems similar in each of the groups. 
+
+Consider that we want to perform an exercise intervention on a group in order to reduce subject weight. We may want to consider the balance of the baseline fitness level of subjects in order to believe our results: subjects who were fit prior to the intervention may systematically benefit less from it (because they may already exercise and not benefit from more!). If we find that the distribution of fit subjects differs between the treatment assignments, we might worry that differences in weight loss between the treatment groups might be due to the baseline fitness and not due to the intervention.
+
+Before we proceed to thinking of this study as a randomized trial, we can consider what balancing would look like in observational studies. If we were unable to randomly allocate subjects to receive the intervention (e.g., if it were unethical), then we could consider matching in order to achieve balance. We could identify subjects of similar fitness who do and do not undergo the intervention and follow them for their weight loss and assess differences. 
+
+But perhaps there is an obscure gene variant that affects weight loss, and it turns out that all of the people who performed the exercise intervention had this gene variant and those without the variant did not perform the intervention. It might be that any observed differences between the intervention groups may actually be attributable to the gene variant and not to the intervention at all! 
+
+Because of the obscurity of that gene variant, we could never hope to match on it. More generally, in observational studies, we worry that unmeasured confounding variables (that we can never take into account!) affect the observed relationships, so drawing causal claims becomes a very difficult task.
+
+But if we could find a way to balance these unmeasured confounders, then interpreting relationships as causal once again becomes a possibility! This is the magic of randomization.
+
+Randomization's goal is to achieve balance across *all* variables, observed and unobserved, so researchers can interpret groups as differing only in the treatment and, thus, attribute differences in the outcome to the treatment alone. However, randomization comes with some important caveats.
+
+Randomization works on the average: in finite (real-world) samples, balancing should hold approximately, but there may be unbalanced variables due to chance alone. And standard randomization algorithms never guarantee balance on a given set of variables because the goal is to balance across all non-treatment variables! 
+
+## Demographics/Baseline Characteristics and P-values in Table 1 of Clinical Trial Manuscripts
+
+In this section, we expand on those caveats and how they relate to the criticism of p-values for demographic/baseline characteristics in clinical trial manuscripts. 
+
+In some clinical trial manuscripts, the table for demographic/baseline characteristics includes p-values from a hypothesis test that, for each characteristic, tests if (some summary of the distribution of) that characteristic differs between treatment groups.
+
+One criticism of these p-values is simply due to multiple comparisons: we should not perform so many formal tests when they are not of central interest to the study. 
+
+Another criticism is that these p-values are uninformative. P-values describe tail probabilities under the null hypothesis - a description of how extreme the data seem if the groups are truly no different in each of these baseline characteristics. But, by performing randomization, we know that differences in baseline characteristics must be due to chance! 
+
+Let us look at a simulated example. Consider an example where we want to assess the binary variable of any decrease in weight due to a binary yes/no of receiving an exercise intervention. In addition to those variables, we have the observed prognostic variables of fit at baseline (yes/no) and an unobserved prognostic genetic variant (yes/no). 
+
+```{r}
+
+
+```
+
+## Stratified Randomization
+
+While we extol the virtues of randomization above, it is important to underscore that important variables may not be balanced, especially in smaller trials, because of the reliance of randomization on balancing on average. And criticizing a lack of balance for a given variable (or variables) in a given sample remains a practical concern because it can influence the validity of results.
+
+Statisticians developed stratified randomization as a remedy for this. In this form of randomization, the experimeter prespecifies some variables that they want to ensure retain balance across treatment groups and incorporates this into the randomization process.
+
+Two major forms of stratified randomization exist: block randomization and dynamic balancing.
+
+
+### Block Randomization
+The more popular and straightforward of the two, block randomization, achieves balance by pre-specifying blocks according to the strata defined by the stratification variables. A block consists of treatment assignments such that when the block is filled (i.e., enough subjects have received the block's assignments), balance is guaranteed across the treatment groups. 
+
+For example, a researcher may want to balance subject's sex across two treatment conditions with equal allocation to each treatment condition. They might specify a block of size 4 for male subjects and another block of size 4 for female subjects. Each block will consist of 2 assignments to the experimental arm and 2 assignments to the control arm in a random order. This means that when 4 male subjects have been enrolled to the trial, there will necessarily be 2 in each treatment group (and similarly for females). Additional blocks will be formed depending on the planned number of subjects to be enrolled.
+
+We can see that block size and formation can be an important logistical concern here: if block sizes are too small or are otherwise predictable, then a keen investigator may be able to deduce treatment assignments for the subjects, unblinding them (which is a separate issue not tackled here). If block sizes are too large, then they may remain unfilled and balancing cannot be guaranteed.
+
+Using random block sizes of e.g. 4-12 is a common way of addressing these concerns. However, a separate concern exists that if too many strata exist, block randomization may fail. By having a large number of strata (by having the stratification variables having too many levels or by having too many stratification variables) relative to the total enrollment, blocks will go unfilled and balance will not be guaranteed. 
+
+<!---
+Many of the earliest lessons in science focus on explaining the causes of natural phenomena that humans observe: why does the apple fall from the tree? What makes the sun rise and set? 
+
+For these types of questions, brilliant minds in physics postulated the work of the mysterious forces of gravity and planetary motion. In biomedical science, we often care about whether some risk factor can be modified to reduce the incidence of disease or whether a disease course can be slowed or reversed by some intervention. How can we establish that? 
+
+The central idea is to determine the *effect* of the intervention on the risk factor or disease. In observational studies, the famed criteria by [Bradford Hill](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) point to a framwork for assessing if a factor causes some result. Note that these criteria are not all necessary for concluding causation.
+
+1. Strength: Is there a strong relationship between the factor and its putative effect?
+2. Consistency: Can the relationship be observed in different settings? 
+3. Specificity: Does the putative effect co-occur frequently with the factor? In the extreme, if the effect only occurs with the factor, then causality can seem quite reasonable. 
+4. Temporality: Does the factor precede the putative effect? Note that this criterion *is necessary* for causality.
+5. Biological gradient: Do we observe a dose-response relationship? I.e., when we observe a change in the level of the factor, do we see a corresponding change in the effect?
+6. Plausibility: Can we explain the mechanism of the relationship? 
+7. Coherence: Does the relationship make sense within a broader understanding?
+8. **Experimentation**: If we intervene and modify the factor, do we reliably modify the effect?
+9. Analogy: Can we compare this relationship to other, similar relationships?
+
+These criteria guide researchers whether to confirm whether the factor of interest causes the putative effect. In particular, many of the criteria provide evidence to suggest that it is not the effect of other factors that commonly cause the factor of interest and the putative effect.
+
+
+-->
