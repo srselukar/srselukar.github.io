@@ -61,23 +61,23 @@ But, overall, she's been a joy so far, and we love her more every day. (Hopefull
 
 1. Dogs are individuals with their own quirks and personalities. 
 
-This is probably abundantly clear to many, especially those who have owned dogs, but, for me, who only ever played with other people's dogs, it was not really something I understood. 
-
-I had the understanding that training a dog and having it settle in was basically a test of patience/consistency with some exercise thrown in. I'd been told that dogs are "easy" and always looking for treats and attention. I figured that if I followed the instructions for teaching commands, redirected unwanted behaviors and gave the dog lots of pets and love, then I'd quickly have a happy and obedient companion. It seemed like, with a flexible work schedule and lots of free time, I could easily accomplish this by just pouring in a lot of time and attention. (I realize that that all may very well still be true, but it sounds so much easier than it necessarily ends up being!)
-
-I didn't realize that I'd have to learn what motivates the dog to listen and what stimuli excites/distracts the dog. I didn't appreciate that dogs don't necessarily know how to play with you and that they might be more interested in chewing than playing with the toy you tossed! 
-
-But the reality also feels much more interesting and rewarding - I didn't appreciate what "bonding" with a dog really meant until experiencing it. It is amazing.
+    This is probably abundantly clear to many, especially those who have owned dogs, but, for me, who only ever played with other people's dogs, it was not really something I understood. 
+    
+    I had the understanding that training a dog and having it settle in was basically a test of patience/consistency with some exercise thrown in. I'd been told that dogs are "easy" and always looking for treats and attention. I figured that if I followed the instructions for teaching commands, redirected unwanted behaviors and gave the dog lots of pets and love, then I'd quickly have a happy and obedient companion. It seemed like, with a flexible work schedule and lots of free time, I could easily accomplish this by just pouring in a lot of time and attention. (I realize that that all may very well still be true, but it sounds so much easier than it necessarily ends up being!)
+    
+    I didn't realize that I'd have to learn what motivates the dog to listen and what stimuli excites/distracts the dog. I didn't appreciate that dogs don't necessarily know how to play with you and that they might be more interested in chewing than playing with the toy you tossed! 
+    
+    But the reality also feels much more interesting and rewarding - I didn't appreciate what "bonding" with a dog really meant until experiencing it. It is amazing.
 
 2. Be very picky about fit.
 
-Given the first lesson, it's pretty clear to me now that there is probably always a risk when adopting. Almost by definition, no one offering adoptions can know the dog(s) completely, so you can only use as much information as is available.
-
-That being said, one mistake we made was anticipating how accommodating we could be. We knew that living in an apartment would be limiting, but we thought that as a somewhat-active young couple with flexible work, we could handle most dogs. (We did want to avoid major behavioral issues like aggression.) We figured that, with enough walking and playtime, even a high-energy dog might be able to fit in with us. It turns out that we could not have a dog so obsessed with other dogs or such high energy that he'd resort to highly destructive behaviors. Hopefully, we don't learn any other problems the hard way!
+    Given the first lesson, it's pretty clear to me now that there is probably always a risk when adopting. Almost by definition, no one offering adoptions can know the dog(s) completely, so you can only use as much information as is available.
+    
+    That being said, one mistake we made was anticipating how accommodating we could be. We knew that living in an apartment would be limiting, but we thought that as a somewhat-active young couple with flexible work, we could handle most dogs. (We did want to avoid major behavioral issues like aggression.) We figured that, with enough walking and playtime, even a high-energy dog might be able to fit in with us. It turns out that we could not have a dog so obsessed with other dogs or such high energy that he'd resort to highly destructive behaviors. Hopefully, we don't learn any other problems the hard way!
 
 3. Be happy with any and all progress.
 
-I never thought that I would have imagined tossing a toy at 11pm as "progress," but it was a huge milestone in our relationship with Raja. Before that, he didn't know what we wanted when we tossed the toy, and we didn't know how he wanted to play with us either. But, in that moment, we made the wonderful connection of how to play in a way we all seemed to enjoy.
-
-Progress in commands and unwanted behaviors is also very iterative, and it can stall or even revert - for no discernible reason, at least to me! I have enjoyed the reward of every new step, and that seems necessary to ride out the frustrations when it isn't moving forward.
+    I never thought that I would have imagined tossing a toy at 11pm as "progress," but it was a huge milestone in our relationship with Raja. Before that, he didn't know what we wanted when we tossed the toy, and we didn't know how he wanted to play with us either. But, in that moment, we made the wonderful connection of how to play in a way we all seemed to enjoy.
+    
+    Progress in commands and unwanted behaviors is also very iterative, and it can stall or even revert - for no discernible reason, at least to me! I have enjoyed the reward of every new step, and that seems necessary to ride out the frustrations when it isn't moving forward.
 
