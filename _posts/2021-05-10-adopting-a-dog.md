@@ -57,7 +57,7 @@ It's been a little over a month since we got her as I write this, and she's warm
 
 But, overall, she's been a joy so far, and we love her more every day. (Hopefully she does, too!)
 
-# Lessons I've Learned (As a Novice Owner and Dog-Adopter):
+# Lessons I've Learned (As a Novice Owner and Dog-Adopter)
 
 1. Dogs are individuals with their own quirks and personalities. 
 
