@@ -9,4 +9,4 @@ categories: Statistics
     
 I have been helping some people prepare PhD application materials, and this prompted me to look back at my own materials. 
 
-<embed src="../assets/selukar_UW_Purpose.pdf" type="application/pdf">
+<embed src="/assets/selukar_UW_Purpose.pdf" type="application/pdf">
