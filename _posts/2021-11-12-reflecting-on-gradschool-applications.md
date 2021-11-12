@@ -7,6 +7,5 @@ tags: stats
 categories: Statistics
 ---
     
-I have been helping some people prepare PhD application materials, and this prompted me to look back at my own materials. 
+I have been helping some people prepare PhD application materials, and this prompted me to look back at my own materials ([Statement of Purpose for UW](/assets/selukar_UW_Purpose.pdf) and [Personal Statement for UW](/assets/selukar_UW_Personal.pdf)). 
 
-<embed src="/assets/selukar_UW_Purpose.pdf" type="application/pdf">
